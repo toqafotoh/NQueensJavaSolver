@@ -1,4 +1,5 @@
 functions :
+1.starting and itialzation
 
 
 
