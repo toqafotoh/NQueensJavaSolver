@@ -1,1 +1,99 @@
+functions :
+
+
+
+## number of threads = number of queens = number of rows ,
+and each thread is responsible for solving the N-Queens problem for a specific row.
+
+    private void solveNQueensMultithreaded() {
+        clearChessboard();
+        stopThreads = false;
+        solutionsCount = 0;
+        setTitle("N-Queens Solver");
+
+        for (int i = 0; i < N; i++) {
+            final int row = i;
+
+            new Thread(() -> solveNQueens(row)).start();
+        }
+    }
+
+_______________________________________________________________________
+🔶    private Rectangle createSquare(int row, int col) {
+        Rectangle rectangle = new Rectangle(70,70);
+        // Alternate the color of the squares to create a checkerboard pattern
+        if ((row + col) % 2 == 0) {
+            rectangle.setFill(Color.WHITE);
+        } else {
+            rectangle.setFill(Color.BLACK);
+        }
+        return rectangle;
+    }
+
+🔶    private void updateChessboard() {
+        // Clear the chessboard
+        clearChessboard();
+
+        // Update the chessboard with queens
+        for (int i = 0; i < N; i++) {
+            int col = queens[i];
+            Rectangle square = createSquare(i, col);
+            gridPane.add(square, col, i);
+        }
+    }
+
+🔶    private void clearChessboard() {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                Rectangle square = createSquare(i,j);
+                gridPane.add(square, j, i);
+            }
+        }
+
+        queens = new int[N];
+    }
+
+____________________________________________________________________________
+prepearation 
+
+ 🔶  
+    public void start(Stage primaryStage) {
+        queens = new int[N];
+        solutionsCount = 0;
+        stopThreads = false;
+
+        primaryStage.setTitle("N-Queens Solver");
+
+        gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(5);
+        gridPane.setVgap(5);
+
+        // Create chessboard grid
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                Rectangle square = createSquare(i,j);
+                gridPane.add(square, j, i);
+            }
+        }
+
+        Button solveButton = new Button("Solve");
+        Button stopButton = new Button("Stop");
+
+        solveButton.setOnAction(e -> solveNQueensMultithreaded());
+        stopButton.setOnAction(e -> stopThreads = true);
+
+        gridPane.add(solveButton, N, 0);
+        gridPane.add(stopButton, N, 1);
+
+        Scene scene = new Scene(gridPane, 70 * N, 70* N);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+______________________________________________________________________________________
+
+
+
+
 
