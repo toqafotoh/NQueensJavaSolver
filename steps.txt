@@ -4,7 +4,7 @@ functions :
 3.clear chess board 
 4.update chess board
 2.create chess board 
-3.clear chess board 
+
 4.update chess board
 
 
