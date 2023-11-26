@@ -1,6 +1,8 @@
 functions :
 1.starting and itialzation
-
+2.create chess board 
+3.clear chess board 
+4.update chess board
 
 
 ## number of threads = number of queens = number of rows ,
