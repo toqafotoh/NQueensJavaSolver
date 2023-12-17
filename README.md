@@ -17,4 +17,9 @@ The N-Queens problem involves placing N queens on an N×N chessboard in such a w
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/NQueensJavaSolver.git
+   git clone https://github.com/toqafotoh/NQueensJavaSolver.git
+2. **Compile and Run:**
+   ```bash
+   cd NQueensJavaSolver
+   javac NQueensGUI.java
+   java NQueensGUI
